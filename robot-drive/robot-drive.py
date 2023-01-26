@@ -11,7 +11,8 @@ is not to say students cannot change things outside of those regions.
 ### END STUDENT SECTION ###
 """
 import time # Used for sleeping between steps
-from adafruit_motorkit import MotorKit, stepper # Used to help drive the motors
+from adafruit_motorkit import MotorKit # For motor control
+from adafruit_motor import stepper # Used for stepper constants
 
 MOTOR_KIT = MotorKit()
 
@@ -39,8 +40,12 @@ def drive():
         while True:
             test_motor.onestep(direction=stepper.FORWARD)
             time.sleep(0.1)
+    # Print message on errors
     except Exceptions as exc:
         print("[ERROR] An exception occurred spinning the motor. Stopping.", exc)
+    # **Always** release the motor when done.
+    finally:
+        test_motor.release()
 
 def main():
     """ Main python function. This is where our code should start. """

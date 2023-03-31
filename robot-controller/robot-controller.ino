@@ -46,4 +46,5 @@ void loop() {
     Serial.print(x_val);
     Serial.print(",");
     Serial.println(y_val);
+    delay(10);
 }

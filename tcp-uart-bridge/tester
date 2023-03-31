@@ -1,0 +1,2 @@
+#!/bin/bash
+socat -d -d -d stdio pty,raw,b115200
